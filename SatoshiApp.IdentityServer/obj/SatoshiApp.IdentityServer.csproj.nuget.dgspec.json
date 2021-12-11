@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\source\\repos\\SatoshiApp\\SatoshiApp.IdentityServer\\SatoshiApp.IdentityServer.csproj": {}
+    "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\SatoshiApp.IdentityServer\\SatoshiApp.IdentityServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\source\\repos\\SatoshiApp\\SatoshiApp.IdentityServer\\SatoshiApp.IdentityServer.csproj": {
+    "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\SatoshiApp.IdentityServer\\SatoshiApp.IdentityServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\source\\repos\\SatoshiApp\\SatoshiApp.IdentityServer\\SatoshiApp.IdentityServer.csproj",
+        "projectUniqueName": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\SatoshiApp.IdentityServer\\SatoshiApp.IdentityServer.csproj",
         "projectName": "SatoshiApp.IdentityServer",
-        "projectPath": "C:\\Users\\user\\source\\repos\\SatoshiApp\\SatoshiApp.IdentityServer\\SatoshiApp.IdentityServer.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\source\\repos\\SatoshiApp\\SatoshiApp.IdentityServer\\obj\\",
+        "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\SatoshiApp.IdentityServer\\SatoshiApp.IdentityServer.csproj",
+        "packagesPath": "C:\\Users\\Somad\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\SatoshiApp.IdentityServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Somad\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -45,9 +44,39 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+            "IdentityServer4.AspNetIdentity": {
               "target": "Package",
-              "version": "[1.10.14, )"
+              "version": "[4.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.Google": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[3.2.0, )"
             }
           },
           "imports": [
@@ -68,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
