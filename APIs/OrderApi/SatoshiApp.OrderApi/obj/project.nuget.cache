@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "GvCr1kxXuKctAiW+oTHpDrwT1yMHOvDE/WKztzXTJ3V+hOmcDrrqHwUu23ze3Vt7oPlTu2NCryOa0TKDdVCD+Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi\\SatoshiApp.OrderApi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Somad\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Somad\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Somad\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.14\\microsoft.visualstudio.azure.containers.tools.targets.1.10.14.nupkg.sha512",
+    "C:\\Users\\Somad\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\Somad\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\Somad\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\Somad\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
