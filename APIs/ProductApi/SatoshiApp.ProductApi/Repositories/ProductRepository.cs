@@ -1,4 +1,5 @@
-﻿using SatoshiApp.ProductApi.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using SatoshiApp.ProductApi.Data;
 using SatoshiApp.ProductApi.Entities;
 using System;
 using System.Collections.Generic;
@@ -18,37 +19,38 @@ namespace SatoshiApp.ProductApi.Repositories
 
         public async Task CreateProduct(Product product)
         {
-            //await _context.Products.InsertOneAsync(product);
+            await _context.Products.AddAsync(product);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<bool> DeleteProduct(string id)
+        public async Task DeleteProduct(Guid id)
         {
-            throw new NotImplementedException();
+            var prod = await _context.Products.FirstOrDefaultAsync(p => p.ProductId == id);
+            _context.Products.Remove(prod);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Product> GetProduct(string id)
+        public async Task<Product> GetProduct(Guid id)
         {
-            throw new NotImplementedException();
+            return await _context.Products.Where(p => p.ProductId == id).FirstOrDefaultAsync();
         }
 
-        public Task<IEnumerable<Product>> GetProductByCategory(string categoryName)
+        public async Task<IEnumerable<Product>> GetProductByName(string name)
         {
-            throw new NotImplementedException();
+            return await _context.Products.Where(p => p.ProductName == name).ToListAsync();
         }
 
-        public Task<IEnumerable<Product>> GetProductByName(string name)
+        public async Task<IEnumerable<Product>> GetProducts()
         {
-            throw new NotImplementedException();
+            return await _context.Products.ToListAsync();
         }
 
-        public Task<IEnumerable<Product>> GetProducts()
+        public async Task UpdateProduct(Product product)
         {
-            throw new NotImplementedException();
-        }
+            _context.Products.Update(product);
 
-        public Task<bool> UpdateProduct(Product product)
-        {
-            throw new NotImplementedException();
+            //Commit the transaction
+            await _context.SaveChangesAsync();
         }
     }
 }

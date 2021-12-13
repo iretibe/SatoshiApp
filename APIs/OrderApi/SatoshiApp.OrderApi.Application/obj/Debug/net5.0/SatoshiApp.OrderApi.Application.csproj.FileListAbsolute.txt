@@ -9,3 +9,4 @@ C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Applica
 C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Application\obj\Debug\net5.0\SatoshiApp.OrderApi.Application.dll
 C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Application\obj\Debug\net5.0\ref\SatoshiApp.OrderApi.Application.dll
 C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Application\obj\Debug\net5.0\SatoshiApp.OrderApi.Application.pdb
+C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Application\obj\Debug\net5.0\SatoshiApp.OrderApi.Application.csprojAssemblyReference.cache
