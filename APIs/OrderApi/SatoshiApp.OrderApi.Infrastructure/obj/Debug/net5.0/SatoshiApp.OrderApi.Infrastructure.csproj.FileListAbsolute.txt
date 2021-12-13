@@ -2,7 +2,6 @@ C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrast
 C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\bin\Debug\net5.0\SatoshiApp.OrderApi.Infrastructure.dll
 C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\bin\Debug\net5.0\ref\SatoshiApp.OrderApi.Infrastructure.dll
 C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\bin\Debug\net5.0\SatoshiApp.OrderApi.Infrastructure.pdb
-C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\obj\Debug\net5.0\SatoshiApp.OrderApi.Infrastructure.csprojAssemblyReference.cache
 C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\obj\Debug\net5.0\SatoshiApp.OrderApi.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\obj\Debug\net5.0\SatoshiApp.OrderApi.Infrastructure.AssemblyInfoInputs.cache
 C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\obj\Debug\net5.0\SatoshiApp.OrderApi.Infrastructure.AssemblyInfo.cs
@@ -10,3 +9,12 @@ C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrast
 C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\obj\Debug\net5.0\SatoshiApp.OrderApi.Infrastructure.dll
 C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\obj\Debug\net5.0\ref\SatoshiApp.OrderApi.Infrastructure.dll
 C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\obj\Debug\net5.0\SatoshiApp.OrderApi.Infrastructure.pdb
+C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\bin\Debug\net5.0\SatoshiApp.OrderApi.Infrastructure.runtimeconfig.json
+C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\bin\Debug\net5.0\SatoshiApp.OrderApi.Infrastructure.runtimeconfig.dev.json
+C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\bin\Debug\net5.0\SatoshiApp.OrderApi.Application.dll
+C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\bin\Debug\net5.0\SatoshiApp.OrderApi.Domain.dll
+C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\bin\Debug\net5.0\SatoshiApp.OrderApi.Application.pdb
+C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\bin\Debug\net5.0\SatoshiApp.OrderApi.Domain.pdb
+C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\obj\Debug\net5.0\SatoshiApp.OrderApi.Infrastructure.csprojAssemblyReference.cache
+C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\obj\Debug\net5.0\SatoshiApp.OrderApi.Infrastructure.csproj.CopyComplete
+C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\obj\Debug\net5.0\SatoshiApp.OrderApi.Infrastructure.genruntimeconfig.cache

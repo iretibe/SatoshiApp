@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  satoshiapp.userapi:
+    image: ${DOCKER_REGISTRY-}satoshiappuserapi
+    build:
+      context: .
+      dockerfile: APIs/UserApi/SatoshiApp.UserApi/Dockerfile
+
+  satoshiapp.productapi:
+    image: ${DOCKER_REGISTRY-}satoshiappproductapi
+    build:
+      context: .
+      dockerfile: APIs/ProductApi/SatoshiApp.ProductApi/Dockerfile
+
+
+  satoshiapp.customer:
+    image: ${DOCKER_REGISTRY-}satoshiappcustomer
+    build:
+      context: .
+      dockerfile: APIs/CustomerApi/SatoshiApp.Customer/Dockerfile
+
+
+  satoshiapp.orderapi:
+    image: ${DOCKER_REGISTRY-}satoshiapporderapi
+    build:
+      context: .
+      dockerfile: APIs/OrderApi/SatoshiApp.OrderApi/Dockerfile
+

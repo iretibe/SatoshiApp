@@ -17,25 +17,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderApi", "OrderApi", "{D6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserApi", "UserApi", "{45768848-AF54-47A0-80BE-7E2F3D635BEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatoshiApp.UI", "UI\SatoshiApp.UI\SatoshiApp.UI.csproj", "{39799ABA-6BD6-40CF-9CFB-08D0B4654AD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatoshiApp.UI", "UI\SatoshiApp.UI\SatoshiApp.UI.csproj", "{39799ABA-6BD6-40CF-9CFB-08D0B4654AD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatoshiApp.Customer", "APIs\CustomerApi\SatoshiApp.Customer\SatoshiApp.Customer.csproj", "{60E16E26-3C26-4708-863F-39F1AEE6888A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatoshiApp.Customer", "APIs\CustomerApi\SatoshiApp.Customer\SatoshiApp.Customer.csproj", "{60E16E26-3C26-4708-863F-39F1AEE6888A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatoshiApp.OrderApi", "APIs\OrderApi\SatoshiApp.OrderApi\SatoshiApp.OrderApi.csproj", "{FC607504-33A6-44CB-9EDC-59918BF8BBE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatoshiApp.OrderApi", "APIs\OrderApi\SatoshiApp.OrderApi\SatoshiApp.OrderApi.csproj", "{FC607504-33A6-44CB-9EDC-59918BF8BBE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatoshiApp.ProductApi", "APIs\ProductApi\SatoshiApp.ProductApi\SatoshiApp.ProductApi.csproj", "{56CB0FCB-DE12-4A38-B41E-D2E7A3A4F8BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatoshiApp.ProductApi", "APIs\ProductApi\SatoshiApp.ProductApi\SatoshiApp.ProductApi.csproj", "{56CB0FCB-DE12-4A38-B41E-D2E7A3A4F8BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatoshiApp.UserApi", "APIs\UserApi\SatoshiApp.UserApi\SatoshiApp.UserApi.csproj", "{0C77A708-A713-43E9-BE9A-E087A434D114}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatoshiApp.UserApi", "APIs\UserApi\SatoshiApp.UserApi\SatoshiApp.UserApi.csproj", "{0C77A708-A713-43E9-BE9A-E087A434D114}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatoshiApp.OrderApi.Application", "APIs\OrderApi\SatoshiApp.OrderApi.Application\SatoshiApp.OrderApi.Application.csproj", "{2D36FE4D-5D38-4165-B96C-1AB9E0C7CC65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatoshiApp.OrderApi.Application", "APIs\OrderApi\SatoshiApp.OrderApi.Application\SatoshiApp.OrderApi.Application.csproj", "{2D36FE4D-5D38-4165-B96C-1AB9E0C7CC65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatoshiApp.OrderApi.Domain", "APIs\OrderApi\SatoshiApp.OrderApi.Domain\SatoshiApp.OrderApi.Domain.csproj", "{421F85AD-77F0-4D02-9EB6-396FE7450082}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatoshiApp.OrderApi.Domain", "APIs\OrderApi\SatoshiApp.OrderApi.Domain\SatoshiApp.OrderApi.Domain.csproj", "{421F85AD-77F0-4D02-9EB6-396FE7450082}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatoshiApp.OrderApi.Infrastructure", "APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\SatoshiApp.OrderApi.Infrastructure.csproj", "{A0FEB53D-7788-4CE7-94C7-31E4D2BE66B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatoshiApp.OrderApi.Infrastructure", "APIs\OrderApi\SatoshiApp.OrderApi.Infrastructure\SatoshiApp.OrderApi.Infrastructure.csproj", "{A0FEB53D-7788-4CE7-94C7-31E4D2BE66B8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{9EB282F4-AAC3-4071-AF90-C44072E57E9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatoshiApp.EventBus.Messages", "BuildingBlocks\SatoshiApp.EventBus.Messages\SatoshiApp.EventBus.Messages.csproj", "{388E9AB4-4168-4587-9D5C-584942D55B92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatoshiApp.EventBus.Messages", "BuildingBlocks\SatoshiApp.EventBus.Messages\SatoshiApp.EventBus.Messages.csproj", "{388E9AB4-4168-4587-9D5C-584942D55B92}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{241131BC-19D0-4FF0-9F16-C539ACD3A0EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,10 @@ Global
 		{388E9AB4-4168-4587-9D5C-584942D55B92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{388E9AB4-4168-4587-9D5C-584942D55B92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{388E9AB4-4168-4587-9D5C-584942D55B92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{241131BC-19D0-4FF0-9F16-C539ACD3A0EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{241131BC-19D0-4FF0-9F16-C539ACD3A0EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{241131BC-19D0-4FF0-9F16-C539ACD3A0EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{241131BC-19D0-4FF0-9F16-C539ACD3A0EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

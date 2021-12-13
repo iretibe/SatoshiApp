@@ -4,14 +4,118 @@
     "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi\\SatoshiApp.OrderApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi\\SatoshiApp.OrderApi.csproj": {
+    "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Application\\SatoshiApp.OrderApi.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi\\SatoshiApp.OrderApi.csproj",
-        "projectName": "SatoshiApp.OrderApi",
-        "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi\\SatoshiApp.OrderApi.csproj",
+        "projectUniqueName": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Application\\SatoshiApp.OrderApi.Application.csproj",
+        "projectName": "SatoshiApp.OrderApi.Application",
+        "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Application\\SatoshiApp.OrderApi.Application.csproj",
         "packagesPath": "C:\\Users\\Somad\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi\\obj\\",
+        "outputPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Somad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Domain\\SatoshiApp.OrderApi.Domain.csproj": {
+                "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Domain\\SatoshiApp.OrderApi.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[10.3.6, )"
+            },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[10.3.6, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.Extensions.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Domain\\SatoshiApp.OrderApi.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Domain\\SatoshiApp.OrderApi.Domain.csproj",
+        "projectName": "SatoshiApp.OrderApi.Domain",
+        "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Domain\\SatoshiApp.OrderApi.Domain.csproj",
+        "packagesPath": "C:\\Users\\Somad\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -43,7 +147,217 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Infrastructure\\SatoshiApp.OrderApi.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Infrastructure\\SatoshiApp.OrderApi.Infrastructure.csproj",
+        "projectName": "SatoshiApp.OrderApi.Infrastructure",
+        "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Infrastructure\\SatoshiApp.OrderApi.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Somad\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Somad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Application\\SatoshiApp.OrderApi.Application.csproj": {
+                "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Application\\SatoshiApp.OrderApi.Application.csproj"
+              },
+              "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Domain\\SatoshiApp.OrderApi.Domain.csproj": {
+                "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Domain\\SatoshiApp.OrderApi.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.25.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi\\SatoshiApp.OrderApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi\\SatoshiApp.OrderApi.csproj",
+        "projectName": "SatoshiApp.OrderApi",
+        "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi\\SatoshiApp.OrderApi.csproj",
+        "packagesPath": "C:\\Users\\Somad\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Somad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Application\\SatoshiApp.OrderApi.Application.csproj": {
+                "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Application\\SatoshiApp.OrderApi.Application.csproj"
+              },
+              "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Domain\\SatoshiApp.OrderApi.Domain.csproj": {
+                "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Domain\\SatoshiApp.OrderApi.Domain.csproj"
+              },
+              "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Infrastructure\\SatoshiApp.OrderApi.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Infrastructure\\SatoshiApp.OrderApi.Infrastructure.csproj"
+              },
+              "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\BuildingBlocks\\SatoshiApp.EventBus.Messages\\SatoshiApp.EventBus.Messages.csproj": {
+                "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\BuildingBlocks\\SatoshiApp.EventBus.Messages\\SatoshiApp.EventBus.Messages.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "MassTransit": {
+              "target": "Package",
+              "version": "[7.3.0, )"
+            },
+            "MassTransit.AspNetCore": {
+              "target": "Package",
+              "version": "[7.3.0, )"
+            },
+            "MassTransit.RabbitMQ": {
+              "target": "Package",
+              "version": "[7.3.0, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.10.14, )"
@@ -67,6 +381,64 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\BuildingBlocks\\SatoshiApp.EventBus.Messages\\SatoshiApp.EventBus.Messages.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\BuildingBlocks\\SatoshiApp.EventBus.Messages\\SatoshiApp.EventBus.Messages.csproj",
+        "projectName": "SatoshiApp.EventBus.Messages",
+        "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\BuildingBlocks\\SatoshiApp.EventBus.Messages\\SatoshiApp.EventBus.Messages.csproj",
+        "packagesPath": "C:\\Users\\Somad\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\BuildingBlocks\\SatoshiApp.EventBus.Messages\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Somad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

@@ -10,7 +10,7 @@ namespace SatoshiApp.Customer.Data
             context.Database.EnsureCreated();
 
             // Look for any products.
-            if (context.Customers.Any())
+            if (context.Customer.Any())
             {
                 return;   // DB has been seeded
             }
@@ -46,7 +46,7 @@ namespace SatoshiApp.Customer.Data
 
             foreach (Entities.Customer s in customers)
             {
-                context.Customers.Add(s);
+                context.Customer.Add(s);
             }
 
             context.SaveChanges();

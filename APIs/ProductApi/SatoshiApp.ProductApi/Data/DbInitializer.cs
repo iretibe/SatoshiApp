@@ -11,7 +11,7 @@ namespace SatoshiApp.ProductApi.Data
             context.Database.EnsureCreated();
 
             // Look for any products.
-            if (context.Products.Any())
+            if (context.Product.Any())
             {
                 return;   // DB has been seeded
             }
@@ -62,7 +62,7 @@ namespace SatoshiApp.ProductApi.Data
             
             foreach (Product s in produts)
             {
-                context.Products.Add(s);
+                context.Product.Add(s);
             }
 
             context.SaveChanges();
