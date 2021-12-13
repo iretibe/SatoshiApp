@@ -8,6 +8,5 @@ namespace SatoshiApp.IdentityServer.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime CreationDate { get; set; }
     }
 }
