@@ -1,20 +1,138 @@
 services:
+  satoshiapp.customer:
+    build:
+      context: C:\Users\Somad\source\repos\SatoshiApp
+      dockerfile: APIs/CustomerApi/SatoshiApp.Customer/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: SatoshiApp.Customer
+      target: base
+    container_name: SatoshiApp.Customer
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: satoshiappcustomer:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  ""'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    tty: true
+    volumes:
+    - C:\Users\Somad\source\repos\SatoshiApp\APIs\CustomerApi\SatoshiApp.Customer:/app:rw
+    - C:\Users\Somad\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Somad\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Somad\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Microsoft\Xamarin\NuGet:/root/.nuget/fallbackpackages:ro
+    - C:\Users\Somad\.nuget\packages:/root/.nuget/packages:ro
+    - C:\Users\Somad\source\repos\SatoshiApp:/src:rw
+  satoshiapp.orderapi:
+    build:
+      context: C:\Users\Somad\source\repos\SatoshiApp
+      dockerfile: APIs/OrderApi/SatoshiApp.OrderApi/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: SatoshiApp.OrderApi
+      target: base
+    container_name: SatoshiApp.OrderApi
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: satoshiapporderapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  ""'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    tty: true
+    volumes:
+    - C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi:/app:rw
+    - C:\Users\Somad\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Somad\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Somad\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Microsoft\Xamarin\NuGet:/root/.nuget/fallbackpackages:ro
+    - C:\Users\Somad\.nuget\packages:/root/.nuget/packages:ro
+    - C:\Users\Somad\source\repos\SatoshiApp:/src:rw
   satoshiapp.productapi:
     build:
       context: C:\Users\Somad\source\repos\SatoshiApp
       dockerfile: APIs/ProductApi/SatoshiApp.ProductApi/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: SatoshiApp.ProductApi
+      target: base
+    container_name: SatoshiApp.ProductApi
+    entrypoint: tail -f /dev/null
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-    image: satoshiappproductapi
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: satoshiappproductapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  ""'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
     ports:
     - target: 80
+    tty: true
+    volumes:
+    - C:\Users\Somad\source\repos\SatoshiApp\APIs\ProductApi\SatoshiApp.ProductApi:/app:rw
+    - C:\Users\Somad\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Somad\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Somad\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Microsoft\Xamarin\NuGet:/root/.nuget/fallbackpackages:ro
+    - C:\Users\Somad\.nuget\packages:/root/.nuget/packages:ro
+    - C:\Users\Somad\source\repos\SatoshiApp:/src:rw
   satoshiapp.userapi:
     build:
       context: C:\Users\Somad\source\repos\SatoshiApp
       dockerfile: APIs/UserApi/SatoshiApp.UserApi/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: SatoshiApp.UserApi
+      target: base
+    container_name: SatoshiApp.UserApi
+    entrypoint: tail -f /dev/null
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-    image: satoshiappuserapi
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: satoshiappuserapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  ""'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
     ports:
     - target: 80
+    tty: true
+    volumes:
+    - C:\Users\Somad\source\repos\SatoshiApp\APIs\UserApi\SatoshiApp.UserApi:/app:rw
+    - C:\Users\Somad\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Somad\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Somad\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Microsoft\Xamarin\NuGet:/root/.nuget/fallbackpackages:ro
+    - C:\Users\Somad\.nuget\packages:/root/.nuget/packages:ro
+    - C:\Users\Somad\source\repos\SatoshiApp:/src:rw
 version: '3.4'

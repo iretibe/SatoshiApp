@@ -1,4 +1,31 @@
 services:
+  satoshiapp.customer:
+    build:
+      context: C:\Users\Somad\source\repos\SatoshiApp
+      dockerfile: APIs/CustomerApi/SatoshiApp.Customer/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: satoshiappcustomer
+    ports:
+    - target: 80
+  satoshiapp.orderapi:
+    build:
+      context: C:\Users\Somad\source\repos\SatoshiApp
+      dockerfile: APIs/OrderApi/SatoshiApp.OrderApi/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: satoshiapporderapi
+    ports:
+    - target: 80
+  satoshiapp.productapi:
+    build:
+      context: C:\Users\Somad\source\repos\SatoshiApp
+      dockerfile: APIs/ProductApi/SatoshiApp.ProductApi/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: satoshiappproductapi
+    ports:
+    - target: 80
   satoshiapp.userapi:
     build:
       context: C:\Users\Somad\source\repos\SatoshiApp
