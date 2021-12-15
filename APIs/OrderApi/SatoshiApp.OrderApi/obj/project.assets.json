@@ -4213,48 +4213,49 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Somad\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi\\SatoshiApp.OrderApi.csproj",
+      "projectUniqueName": "C:\\PROJECTS\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi\\SatoshiApp.OrderApi.csproj",
       "projectName": "SatoshiApp.OrderApi",
-      "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi\\SatoshiApp.OrderApi.csproj",
-      "packagesPath": "C:\\Users\\Somad\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi\\obj\\",
+      "projectPath": "C:\\PROJECTS\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi\\SatoshiApp.OrderApi.csproj",
+      "packagesPath": "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\",
+      "outputPath": "C:\\PROJECTS\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Somad\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\Michael Ameyaw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Application\\SatoshiApp.OrderApi.Application.csproj": {
-              "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Application\\SatoshiApp.OrderApi.Application.csproj"
+            "C:\\PROJECTS\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Application\\SatoshiApp.OrderApi.Application.csproj": {
+              "projectPath": "C:\\PROJECTS\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Application\\SatoshiApp.OrderApi.Application.csproj"
             },
-            "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Domain\\SatoshiApp.OrderApi.Domain.csproj": {
-              "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Domain\\SatoshiApp.OrderApi.Domain.csproj"
+            "C:\\PROJECTS\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Domain\\SatoshiApp.OrderApi.Domain.csproj": {
+              "projectPath": "C:\\PROJECTS\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Domain\\SatoshiApp.OrderApi.Domain.csproj"
             },
-            "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Infrastructure\\SatoshiApp.OrderApi.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Infrastructure\\SatoshiApp.OrderApi.Infrastructure.csproj"
+            "C:\\PROJECTS\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Infrastructure\\SatoshiApp.OrderApi.Infrastructure.csproj": {
+              "projectPath": "C:\\PROJECTS\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Infrastructure\\SatoshiApp.OrderApi.Infrastructure.csproj"
             },
-            "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\BuildingBlocks\\SatoshiApp.EventBus.Messages\\SatoshiApp.EventBus.Messages.csproj": {
-              "projectPath": "C:\\Users\\Somad\\source\\repos\\SatoshiApp\\BuildingBlocks\\SatoshiApp.EventBus.Messages\\SatoshiApp.EventBus.Messages.csproj"
+            "C:\\PROJECTS\\SatoshiApp\\BuildingBlocks\\SatoshiApp.EventBus.Messages\\SatoshiApp.EventBus.Messages.csproj": {
+              "projectPath": "C:\\PROJECTS\\SatoshiApp\\BuildingBlocks\\SatoshiApp.EventBus.Messages\\SatoshiApp.EventBus.Messages.csproj"
             }
           }
         }
@@ -4340,7 +4341,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

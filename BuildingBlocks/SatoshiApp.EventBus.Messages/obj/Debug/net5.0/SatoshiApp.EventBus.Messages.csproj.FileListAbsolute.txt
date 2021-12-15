@@ -10,3 +10,15 @@ C:\Users\Somad\source\repos\SatoshiApp\BuildingBlocks\SatoshiApp.EventBus.Messag
 C:\Users\Somad\source\repos\SatoshiApp\BuildingBlocks\SatoshiApp.EventBus.Messages\obj\Debug\net5.0\ref\SatoshiApp.EventBus.Messages.dll
 C:\Users\Somad\source\repos\SatoshiApp\BuildingBlocks\SatoshiApp.EventBus.Messages\obj\Debug\net5.0\SatoshiApp.EventBus.Messages.pdb
 C:\Users\Somad\source\repos\SatoshiApp\BuildingBlocks\SatoshiApp.EventBus.Messages\obj\Debug\net5.0\SatoshiApp.EventBus.Messages.csprojAssemblyReference.cache
+C:\PROJECTS\SatoshiApp\BuildingBlocks\SatoshiApp.EventBus.Messages\bin\Debug\net5.0\SatoshiApp.EventBus.Messages.deps.json
+C:\PROJECTS\SatoshiApp\BuildingBlocks\SatoshiApp.EventBus.Messages\bin\Debug\net5.0\SatoshiApp.EventBus.Messages.dll
+C:\PROJECTS\SatoshiApp\BuildingBlocks\SatoshiApp.EventBus.Messages\bin\Debug\net5.0\ref\SatoshiApp.EventBus.Messages.dll
+C:\PROJECTS\SatoshiApp\BuildingBlocks\SatoshiApp.EventBus.Messages\bin\Debug\net5.0\SatoshiApp.EventBus.Messages.pdb
+C:\PROJECTS\SatoshiApp\BuildingBlocks\SatoshiApp.EventBus.Messages\obj\Debug\net5.0\SatoshiApp.EventBus.Messages.csproj.AssemblyReference.cache
+C:\PROJECTS\SatoshiApp\BuildingBlocks\SatoshiApp.EventBus.Messages\obj\Debug\net5.0\SatoshiApp.EventBus.Messages.GeneratedMSBuildEditorConfig.editorconfig
+C:\PROJECTS\SatoshiApp\BuildingBlocks\SatoshiApp.EventBus.Messages\obj\Debug\net5.0\SatoshiApp.EventBus.Messages.AssemblyInfoInputs.cache
+C:\PROJECTS\SatoshiApp\BuildingBlocks\SatoshiApp.EventBus.Messages\obj\Debug\net5.0\SatoshiApp.EventBus.Messages.AssemblyInfo.cs
+C:\PROJECTS\SatoshiApp\BuildingBlocks\SatoshiApp.EventBus.Messages\obj\Debug\net5.0\SatoshiApp.EventBus.Messages.csproj.CoreCompileInputs.cache
+C:\PROJECTS\SatoshiApp\BuildingBlocks\SatoshiApp.EventBus.Messages\obj\Debug\net5.0\SatoshiApp.EventBus.Messages.dll
+C:\PROJECTS\SatoshiApp\BuildingBlocks\SatoshiApp.EventBus.Messages\obj\Debug\net5.0\ref\SatoshiApp.EventBus.Messages.dll
+C:\PROJECTS\SatoshiApp\BuildingBlocks\SatoshiApp.EventBus.Messages\obj\Debug\net5.0\SatoshiApp.EventBus.Messages.pdb
