@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
 using SatoshiApp.ProductApi.Data;
 using SatoshiApp.ProductApi.Entities;
 using System;
@@ -10,47 +11,60 @@ namespace SatoshiApp.ProductApi.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly ProductContext _context;
+        private readonly IProductContext _context;
 
-        public ProductRepository(ProductContext context)
+        public ProductRepository(IProductContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public async Task CreateProduct(Product product)
         {
-            await _context.Product.AddAsync(product);
-            await _context.SaveChangesAsync();
+            await _context.Products.InsertOneAsync(product);
         }
 
-        public async Task DeleteProduct(Guid id)
+        public async Task<bool> DeleteProduct(string id)
         {
-            var prod = await _context.Product.FirstOrDefaultAsync(p => p.ProductId == id);
-            _context.Product.Remove(prod);
-            await _context.SaveChangesAsync();
+            FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p => p.Id, id);
+
+            DeleteResult deleteResult = await _context.Products.DeleteOneAsync(filter);
+
+            return deleteResult.IsAcknowledged && deleteResult.DeletedCount > 0;
         }
 
-        public async Task<Product> GetProduct(Guid id)
+        public async Task<Product> GetProduct(string id)
         {
-            return await _context.Product.Where(p => p.ProductId == id).FirstOrDefaultAsync();
+            return await _context
+                .Products
+                .Find(p => p.Id == id)
+                .FirstOrDefaultAsync();
         }
-
+        
         public async Task<IEnumerable<Product>> GetProductByName(string name)
         {
-            return await _context.Product.Where(p => p.ProductName == name).ToListAsync();
+            FilterDefinition<Product> filter = Builders<Product>.Filter.ElemMatch(p => p.Name, name);
+
+            return await _context
+                .Products
+                .Find(filter)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Product>> GetProducts()
         {
-            return await _context.Product.ToListAsync();
+            return await _context
+                .Products
+                .Find(p => true)
+                .ToListAsync();
         }
 
-        public async Task UpdateProduct(Product product)
+        public async Task<bool> UpdateProduct(Product product)
         {
-            _context.Product.Update(product);
+            var updateResult = await _context
+                .Products
+                .ReplaceOneAsync(filter: g => g.Id == product.Id, replacement: product);
 
-            //Commit the transaction
-            await _context.SaveChangesAsync();
+            return updateResult.IsAcknowledged && updateResult.ModifiedCount > 0;
         }
     }
 }

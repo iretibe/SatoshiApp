@@ -1,16 +1,19 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace SatoshiApp.ProductApi.Entities
 {
     public class Product
     {
-        [Key]
-        public Guid ProductId { get; set; }
-        [Required]
-        public string ProductName { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+
+        [BsonElement]
+        public string Name { get; set; }
+        public string Summary { get; set; }
         public string Description { get; set; }
-        public string ProductImage { get; set; }
+        public string ImageFile { get; set; }
         public decimal Price { get; set; }
     }
 }

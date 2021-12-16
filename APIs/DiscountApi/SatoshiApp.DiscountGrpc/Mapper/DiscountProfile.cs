@@ -7,7 +7,7 @@ namespace SatoshiApp.DiscountGrpc.Mapper
     {
         public DiscountProfile()
         {
-            CreateMap<Coupon, CouponModel>().ReverseMap();
+            //CreateMap<Coupon, CouponModel>().ReverseMap();
         }
     }
 }

@@ -22,8 +22,7 @@ namespace SatoshiApp.ProductApi.Controllers
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-
-        [HttpGet("GetProducts")]
+        [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
@@ -32,11 +31,10 @@ namespace SatoshiApp.ProductApi.Controllers
             return Ok(products);
         }
 
-
-        [HttpGet("GetProductById", Name = "GetProductById")]
+        [HttpGet("{id:length(24)}", Name = "GetProduct")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Product>> GetProductById(Guid id)
+        public async Task<ActionResult<Product>> GetProductById(string id)
         {
             var product = await _productRepository.GetProduct(id);
 
@@ -49,7 +47,6 @@ namespace SatoshiApp.ProductApi.Controllers
 
             return Ok(product);
         }
-
 
         [Route("[action]/{name}", Name = "GetProductByName")]
         [HttpGet]
@@ -68,32 +65,29 @@ namespace SatoshiApp.ProductApi.Controllers
             return Ok(items);
         }
 
-
-        [HttpPost("CreateProduct")]
+        [HttpPost]
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Product>> CreateProduct([FromBody] Product product)
         {
             await _productRepository.CreateProduct(product);
 
-            return Ok(product);
-
-            //return CreatedAtRoute("GetProduct", new { id = product.ProductId }, product);
+            return CreatedAtRoute("GetProduct", new { id = product.Id }, product);
         }
 
 
-        [HttpPut("UpdateProduct")]
+        [HttpPut]
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> UpdateProduct([FromBody] Product product)
         {
-            return Ok(_productRepository.UpdateProduct(product));
+            return Ok(await _productRepository.UpdateProduct(product));
         }
 
 
-        [HttpDelete("DeleteProduct", Name = "DeleteProduct")]
+        [HttpDelete("{id:length(24)}", Name = "DeleteProduct")]
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> DeleteProductById(Guid id)
+        public async Task<IActionResult> DeleteProductById(string id)
         {
-            return Ok(_productRepository.DeleteProduct(id));
+            return Ok(await _productRepository.DeleteProduct(id));
         }
     }
 }

@@ -1,35 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Extensions.Configuration;
+using MongoDB.Driver;
 using SatoshiApp.ProductApi.Entities;
 
 namespace SatoshiApp.ProductApi.Data
 {
-    public partial class ProductContext : DbContext
+    public class ProductContext : IProductContext
     {
-        public virtual DbSet<Product> Product { get; set; }
-
-        public ProductContext(DbContextOptions<ProductContext> options) : base(options)
+        public ProductContext(IConfiguration configuration)
         {
+            var client = new MongoClient(configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
+            var database = client.GetDatabase(configuration.GetValue<string>("DatabaseSettings:DatabaseName"));
+
+            Products = database.GetCollection<Product>(configuration.GetValue<string>("DatabaseSettings:CollectionName"));
+            CatalogContextSeed.SeedData(Products);
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-            }
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
-
-            modelBuilder.Entity<Product>(entity =>
-            {
-                entity.Property(e => e.ProductId).HasDefaultValueSql("(newid())");
-            });
-
-            OnModelCreatingPartial(modelBuilder);
-        }
-
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+        public IMongoCollection<Product> Products { get; }
     }
 }
