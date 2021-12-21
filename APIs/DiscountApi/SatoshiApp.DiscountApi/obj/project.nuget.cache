@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "eegW2/Bz7XUo9nmWiKF2ig/IQF26AWE/MWU9DTV4DMPYrjKySf/XZV5TjdOKoTXGY4kdCjyySAeJcJ2PGm207w==",
+  "dgSpecHash": "7rv7ZGFnvkrlhidwp6EYZzr9AOvP7McSAzqiV0RNrTjLVXuFOhVIRN6VkD96YdY61dIzgjwuEftcroev2SvjUw==",
   "success": true,
   "projectFilePath": "C:\\PROJECTS\\SatoshiApp\\APIs\\DiscountApi\\SatoshiApp.DiscountApi\\SatoshiApp.DiscountApi.csproj",
   "expectedPackageFiles": [
@@ -39,6 +39,7 @@
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
+    "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\npgsql\\6.0.1\\npgsql.6.0.1.nupkg.sha512",
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
@@ -83,6 +84,7 @@
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\system.resources.resourcemanager\\4.3.0\\system.resources.resourcemanager.4.3.0.nupkg.sha512",
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\system.runtime.caching\\4.7.0\\system.runtime.caching.4.7.0.nupkg.sha512",
+    "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\system.runtime.extensions\\4.3.0\\system.runtime.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\system.runtime.handles\\4.3.0\\system.runtime.handles.4.3.0.nupkg.sha512",
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\system.runtime.interopservices\\4.3.0\\system.runtime.interopservices.4.3.0.nupkg.sha512",

@@ -7,6 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["APIs/DiscountApi/SatoshiApp.DiscountApi/SatoshiApp.DiscountApi.csproj", "APIs/DiscountApi/SatoshiApp.DiscountApi/"]
+COPY ["BuildingBlocks/SatoshiApp.EventBus.Messages/SatoshiApp.EventBus.Messages.csproj", "BuildingBlocks/SatoshiApp.EventBus.Messages/"]
 RUN dotnet restore "APIs/DiscountApi/SatoshiApp.DiscountApi/SatoshiApp.DiscountApi.csproj"
 COPY . .
 WORKDIR "/src/APIs/DiscountApi/SatoshiApp.DiscountApi"

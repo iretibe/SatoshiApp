@@ -11,18 +11,18 @@ namespace SatoshiApp.DiscountApi.Controllers
     [ApiController]
     public class DiscountController : ControllerBase
     {
-        private readonly IDiscountRepository _repository;
+        private readonly IDiscountRepository _discountRepository;
 
-        public DiscountController(IDiscountRepository repository)
+        public DiscountController(IDiscountRepository discountRepository)
         {
-            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            _discountRepository = discountRepository ?? throw new ArgumentNullException(nameof(discountRepository));
         }
 
         [HttpGet("{productName}", Name = "GetDiscount")]
         [ProducesResponseType(typeof(Coupon), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Coupon>> GetDiscount(string productName)
         {
-            var discount = await _repository.GetDiscount(productName);
+            var discount = await _discountRepository.GetDiscount(productName);
 
             return Ok(discount);
         }
@@ -31,7 +31,7 @@ namespace SatoshiApp.DiscountApi.Controllers
         [ProducesResponseType(typeof(Coupon), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Coupon>> CreateDiscount([FromBody] Coupon coupon)
         {
-            await _repository.CreateDiscount(coupon);
+            await _discountRepository.CreateDiscount(coupon);
 
             return CreatedAtRoute("GetDiscount", new { productName = coupon.ProductName }, coupon);
         }
@@ -40,14 +40,14 @@ namespace SatoshiApp.DiscountApi.Controllers
         [ProducesResponseType(typeof(Coupon), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Coupon>> UpdateBasket([FromBody] Coupon coupon)
         {
-            return Ok(await _repository.UpdateDiscount(coupon));
+            return Ok(await _discountRepository.UpdateDiscount(coupon));
         }
 
         [HttpDelete("{productName}", Name = "DeleteDiscount")]
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<bool>> DeleteDiscount(string productName)
         {
-            return Ok(await _repository.DeleteDiscount(productName));
+            return Ok(await _discountRepository.DeleteDiscount(productName));
         }
     }
 }

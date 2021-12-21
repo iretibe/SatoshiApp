@@ -1,6 +1,6 @@
 ﻿using Dapper;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using Npgsql;
 using SatoshiApp.DiscountApi.Entities;
 using System;
 using System.Threading.Tasks;
@@ -18,7 +18,7 @@ namespace SatoshiApp.DiscountApi.Repositories
 
         public async Task<bool> CreateDiscount(Coupon coupon)
         {
-            using var connection = new SqlConnection(_configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
+            using var connection = new NpgsqlConnection(_configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
 
             var affected =
                 await connection.ExecuteAsync
@@ -32,7 +32,7 @@ namespace SatoshiApp.DiscountApi.Repositories
 
         public async Task<bool> DeleteDiscount(string productName)
         {
-            using var connection = new SqlConnection(_configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
+            using var connection = new NpgsqlConnection(_configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
 
             var affected = await connection.ExecuteAsync("DELETE FROM Coupon WHERE ProductName = @ProductName",
                 new { ProductName = productName });
@@ -44,7 +44,7 @@ namespace SatoshiApp.DiscountApi.Repositories
 
         public async Task<Coupon> GetDiscount(string productName)
         {
-            using var connection = new SqlConnection(_configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
+            using var connection = new NpgsqlConnection(_configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
 
             var coupon = await connection.QueryFirstOrDefaultAsync<Coupon>
                 ("SELECT * FROM Coupon WHERE ProductName = @ProductName", new { ProductName = productName });
@@ -57,7 +57,7 @@ namespace SatoshiApp.DiscountApi.Repositories
 
         public async Task<bool> UpdateDiscount(Coupon coupon)
         {
-            using var connection = new SqlConnection(_configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
+            using var connection = new NpgsqlConnection(_configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
 
             var affected = await connection.ExecuteAsync
                     ("UPDATE Coupon SET ProductName=@ProductName, Description = @Description, Amount = @Amount WHERE Id = @Id",

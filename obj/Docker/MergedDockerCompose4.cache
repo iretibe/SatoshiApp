@@ -1,0 +1,63 @@
+services:
+  basketdb:
+    container_name: basketdb
+    image: redis:alpine
+    ports:
+    - published: 6379
+      target: 6379
+    restart: always
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce
+    ports:
+    - published: 8080
+      target: 8000
+    - published: 9000
+      target: 9000
+    restart: always
+    volumes:
+    - portainer_data:/data:rw
+    - /var/run/docker.sock:/var/run/docker.sock:rw
+  productdb:
+    container_name: productdb
+    image: mongo
+    ports:
+    - published: 27017
+      target: 27017
+    restart: always
+    volumes:
+    - mongo_data:/data/db:rw
+  satoshiapp.basketapi:
+    build:
+      context: C:\PROJECTS\SatoshiApp
+      dockerfile: APIs/BasketApi/Satoshiapp.BasketApi/Dockerfile
+    container_name: satoshiapp.basketapi
+    depends_on:
+      basketdb:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      CacheSettings:ConnectionString: basketdb:6379
+    image: satoshiappbasketapi
+    ports:
+    - published: 9002
+      target: 80
+  satoshiapp.productapi:
+    build:
+      context: C:\PROJECTS\SatoshiApp
+      dockerfile: APIs/ProductApi/SatoshiApp.ProductApi/Dockerfile
+    container_name: satoshiapp.productapi
+    depends_on:
+      productdb:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DatabaseSettings:ConnectionString: mongodb://catalogdb:27017
+    image: satoshiappproductapi
+    ports:
+    - published: 9001
+      target: 80
+version: '3.4'
+volumes:
+  mongo_data: {}
+  portainer_data: {}

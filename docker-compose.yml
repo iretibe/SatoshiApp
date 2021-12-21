@@ -1,11 +1,21 @@
 version: '3.4'
 
 services:
-  satoshiapp.userapi:
-    image: ${DOCKER_REGISTRY-}satoshiappuserapi
-    build:
-      context: .
-      dockerfile: APIs/UserApi/SatoshiApp.UserApi/Dockerfile
+  productdb:
+    image: mongo
+
+  basketdb:
+    image: redis:alpine
+
+  discountdb:
+    image: postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+
+  portainer:
+    image: portainer/portainer-ce
+
 
   satoshiapp.productapi:
     image: ${DOCKER_REGISTRY-}satoshiappproductapi
@@ -13,17 +23,20 @@ services:
       context: .
       dockerfile: APIs/ProductApi/SatoshiApp.ProductApi/Dockerfile
 
-
-  satoshiapp.customer:
-    image: ${DOCKER_REGISTRY-}satoshiappcustomer
+  satoshiapp.basketapi:
+    image: ${DOCKER_REGISTRY-}satoshiappbasketapi
     build:
       context: .
-      dockerfile: APIs/CustomerApi/SatoshiApp.Customer/Dockerfile
+      dockerfile: APIs/BasketApi/Satoshiapp.BasketApi/Dockerfile
 
-
-  satoshiapp.orderapi:
-    image: ${DOCKER_REGISTRY-}satoshiapporderapi
+  satoshiapp.discountapi:
+    image: ${DOCKER_REGISTRY-}satoshiappdiscountapi
     build:
       context: .
-      dockerfile: APIs/OrderApi/SatoshiApp.OrderApi/Dockerfile
+      dockerfile: APIs/DiscountApi/SatoshiApp.DiscountApi/Dockerfile
 
+volumes:
+  mongo_data:
+  portainer_data:
+  postgres_data:
+  pgadmin_data:
