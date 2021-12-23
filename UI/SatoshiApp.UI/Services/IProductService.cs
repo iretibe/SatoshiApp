@@ -7,7 +7,7 @@ namespace SatoshiApp.UI.Services
     public interface IProductService
     {
         Task<IEnumerable<ProductModel>> GetProduct();
-        Task<IEnumerable<ProductModel>> GetProductByCategory(string category);
+        Task<IEnumerable<ProductModel>> GetProductByName(string name);
         Task<ProductModel> GetProduct(string id);
         Task<ProductModel> CreateProduct(ProductModel model);
     }

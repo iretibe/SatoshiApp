@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ShoppingUI.Pages
+namespace SatoshiApp.UI.Pages
 {
     public class IndexModel : PageModel
     {
