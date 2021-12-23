@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SatoshiApp.Aggregator.Models;
 using SatoshiApp.Aggregator.Services;
 using System;

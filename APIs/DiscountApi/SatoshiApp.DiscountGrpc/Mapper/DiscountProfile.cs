@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SatoshiApp.DiscountGrpc.Entities;
+using SatoshiApp.DiscountGrpc.Protos;
 
 namespace SatoshiApp.DiscountGrpc.Mapper
 {
@@ -7,7 +8,7 @@ namespace SatoshiApp.DiscountGrpc.Mapper
     {
         public DiscountProfile()
         {
-            //CreateMap<Coupon, CouponModel>().ReverseMap();
+            CreateMap<Coupon, CouponModel>().ReverseMap();
         }
     }
 }

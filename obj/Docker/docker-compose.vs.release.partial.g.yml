@@ -1,14 +1,13 @@
 version: '3.4'
 
 services:
-  satoshiapp.customer:
-    container_name: SatoshiApp.Customer
+  satoshiapp.basketapi:
     build:
       labels:
         com.microsoft.created-by: "visual-studio"
-        com.microsoft.visual-studio.project-name: "SatoshiApp.Customer"
+        com.microsoft.visual-studio.project-name: "SatoshiApp.BasketApi"
     volumes:
-      - C:\Users\Somad\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\Michael Ameyaw\vsdbg\vs2017u5:/remote_debugger:rw
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
@@ -18,16 +17,15 @@ services:
       com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages  \"\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
-      com.microsoft.visual-studio.project-name: "SatoshiApp.Customer"
+      com.microsoft.visual-studio.project-name: "SatoshiApp.BasketApi"
     tty: true
-  satoshiapp.orderapi:
-    container_name: SatoshiApp.OrderApi
+  satoshiapp.discountapi:
     build:
       labels:
         com.microsoft.created-by: "visual-studio"
-        com.microsoft.visual-studio.project-name: "SatoshiApp.OrderApi"
+        com.microsoft.visual-studio.project-name: "SatoshiApp.DiscountApi"
     volumes:
-      - C:\Users\Somad\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\Michael Ameyaw\vsdbg\vs2017u5:/remote_debugger:rw
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
@@ -37,17 +35,35 @@ services:
       com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages  \"\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
-      com.microsoft.visual-studio.project-name: "SatoshiApp.OrderApi"
+      com.microsoft.visual-studio.project-name: "SatoshiApp.DiscountApi"
+    tty: true
+
+  satoshiapp.discountgrpc:
+    build:
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "SatoshiApp.DiscountGrpc"
+    volumes:
+      - C:\Users\Michael Ameyaw\vsdbg\vs2017u5:/remote_debugger:rw
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages  \"\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+      com.microsoft.visual-studio.project-name: "SatoshiApp.DiscountGrpc"
     tty: true
 
   satoshiapp.productapi:
-    container_name: SatoshiApp.ProductApi
     build:
       labels:
         com.microsoft.created-by: "visual-studio"
         com.microsoft.visual-studio.project-name: "SatoshiApp.ProductApi"
     volumes:
-      - C:\Users\Somad\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\Michael Ameyaw\vsdbg\vs2017u5:/remote_debugger:rw
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
@@ -58,24 +74,4 @@ services:
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
       com.microsoft.visual-studio.project-name: "SatoshiApp.ProductApi"
-    tty: true
-
-  satoshiapp.userapi:
-    container_name: SatoshiApp.UserApi
-    build:
-      labels:
-        com.microsoft.created-by: "visual-studio"
-        com.microsoft.visual-studio.project-name: "SatoshiApp.UserApi"
-    volumes:
-      - C:\Users\Somad\vsdbg\vs2017u5:/remote_debugger:rw
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-
-    entrypoint: tail -f /dev/null
-    labels:
-      com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages  \"\""
-      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
-      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
-      com.microsoft.visual-studio.project-name: "SatoshiApp.UserApi"
     tty: true

@@ -27,11 +27,27 @@ services:
     volumes:
         - postgres_data:/var/lib/postgresql/data/
 
+  orderdb:
+    container_name: orderdb
+    environment:
+        SA_PASSWORD: "YEso!@12"
+        ACCEPT_EULA: "Y"
+    restart: always
+    ports:
+        - "1433:1433"
+
+  rabbitmq:
+    container_name: rabbitmq
+    restart: always
+    ports:
+        - "5672:5672"
+        - "15672:15672"
+
   pgadmin:
     container_name: pgadmin
     environment:
-        - PGADMIN_DEFAULT_EMAIL=admin@aspnetrun.com
-        - PGADMIN_DEFAULT_PASSWORD=admin1234
+        - PGADMIN_DEFAULT_EMAIL=somad@yessoufou.com
+        - PGADMIN_DEFAULT_PASSWORD=Admin@123
     restart: always
     ports:
         - "5050:80"
@@ -52,7 +68,7 @@ services:
     container_name: satoshiapp.productapi
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "DatabaseSettings:ConnectionString=mongodb://catalogdb:27017"
+      - "DatabaseSettings:ConnectionString=mongodb://productdb:27017"
     depends_on:
       - productdb
     ports:
@@ -63,11 +79,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "CacheSettings:ConnectionString=basketdb:6379"
-      #- "GrpcSettings:DiscountUrl=http://discount.grpc"
-      #- "EventBusSettings:HostAddress=amqp://guest:guest@localhost:5672"
+      - "GrpcSettings:DiscountUrl=http://discount.grpc"
+      - "EventBusSettings:HostAddress=amqp://guest:guest@localhost:5672"
     depends_on:
         - basketdb
-        #- rabbitmq
+        - rabbitmq
     ports:
       - "9002:80"
 
@@ -75,10 +91,56 @@ services:
     container_name: satoshiapp.discountapi
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "DatabaseSettings:ConnectionString=Server=localhost;Port=5432;Database=Discountdb;User Id=admin;Password=admin1234;"
+      - "DatabaseSettings:ConnectionString=Server=discountdb;Port=5432;Database=Discountdb;User Id=admin;Password=admin1234;"
     depends_on:
         - discountdb
     ports:
       - "9003:80"
 
+  satoshiapp.discountgrpc:
+    container_name: satoshiapp.discountgrpc
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=Server=localhost;Port=5432;Database=Discountdb;User Id=admin;Password=admin1234;"
+    depends_on:
+        - discountdb
+    ports:
+      - "9004:80"
 
+  satoshiapp.orderapi:
+    container_name: satoshiapp.orderapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:OrderingConnectionString=Server=codelearnersoft.net;Database=SatoshiDB;User ID=sa;Password=YEso!@12;Trusted_Connection=False;MultipleActiveResultSets=true;TrustServerCertificate=True"
+      - "EventBusSettings:HostAddress=amqp://guest:guest@localhost:5672"
+    depends_on:
+        - orderdb
+        - rabbitmq
+    ports:
+      - "9005:80"
+
+  satoshi.apigateway:
+    container_name: satoshi.apigateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+        - satoshiapp.productapi
+        - satoshiapp.basketapi
+        - satoshiapp.discountapi
+        - satoshiapp.orderapi
+    ports:
+      - "9006:80"
+
+  satoshiapp.aggregator:
+    container_name: satoshiapp.aggregator
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+        - "ApiSettings:ProductUrl=http://satoshiapp.productapi"
+        - "ApiSettings:BasketUrl=http://satoshiapp.basketapi"
+        - "ApiSettings:OrderUrl=http://satoshiapp.orderapi"
+    depends_on:
+        - satoshiapp.productapi
+        - satoshiapp.basketapi
+        - satoshiapp.orderapi
+    ports:
+        - "9007:80"

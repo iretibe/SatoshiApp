@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using SatoshiApp.BasketApi.Entities;
+using SatoshiApp.BasketApi.GrpcServices;
 using SatoshiApp.BasketApi.Repositories;
 using SatoshiApp.EventBus.Messages.Events;
 using System;
@@ -14,17 +16,17 @@ namespace SatoshiApp.BasketApi.Controllers
     public class BasketController : ControllerBase
     {
         private readonly IBasketRepository _basketRepository;
-        //private readonly DiscountGrpcService _discountGrpcService;
+        private readonly DiscountGrpcService _discountGrpcService;
         private readonly IMapper _mapper;
-        //private readonly IPublishEndpoint _publishEndpoint;
+        private readonly IPublishEndpoint _publishEndpoint;
 
-        public BasketController(IBasketRepository basketRepository, //DiscountGrpcService discountGrpcService,
-            IMapper mapper) //, IPublishEndpoint publishEndpoint)
+        public BasketController(IBasketRepository basketRepository, DiscountGrpcService discountGrpcService,
+            IMapper mapper, IPublishEndpoint publishEndpoint)
         {
             _basketRepository = basketRepository ?? throw new ArgumentNullException(nameof(basketRepository));
-            //_discountGrpcService = discountGrpcService ?? throw new ArgumentNullException(nameof(discountGrpcService));
+            _discountGrpcService = discountGrpcService ?? throw new ArgumentNullException(nameof(discountGrpcService));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-            //_publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
+            _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
         }
 
         [HttpGet("{userName}", Name = "GetBasket")]
@@ -42,11 +44,11 @@ namespace SatoshiApp.BasketApi.Controllers
         {
             //Consume Discount Grpc method by communicating with the discount grpc 
             //and calculating latest prices of a product into the shopping cart
-            //foreach (var item in basket.Items)
-            //{
-            //    var coupon = await _discountGrpcService.GetDiscount(item.ProductName);
-            //    item.Price -= coupon.Amount;
-            //}
+            foreach (var item in basket.Items)
+            {
+                var coupon = await _discountGrpcService.GetDiscount(item.ProductName);
+                item.Price -= coupon.Amount;
+            }
 
             return Ok(await _basketRepository.UpdateBasket(basket));
         }
@@ -79,7 +81,7 @@ namespace SatoshiApp.BasketApi.Controllers
 
             eventMessage.TotalPrice = basket.TotalPrice;
 
-            //await _publishEndpoint.Publish<BasketCheckoutEvent>(eventMessage);
+            await _publishEndpoint.Publish<BasketCheckoutEvent>(eventMessage);
 
             //Remove the basket
             await _basketRepository.DeleteBasket(basket.UserName);

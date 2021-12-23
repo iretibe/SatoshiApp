@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MassTransit;
-using MassTransit.Mediator;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using SatoshiApp.EventBus.Messages.Events;
 using SatoshiApp.OrderApi.Application.Features.Orders.Commands.CheckoutOrder;

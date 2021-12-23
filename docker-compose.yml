@@ -10,6 +10,12 @@ services:
   discountdb:
     image: postgres
 
+  orderdb:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+
   pgadmin:
     image: dpage/pgadmin4
 
@@ -34,6 +40,30 @@ services:
     build:
       context: .
       dockerfile: APIs/DiscountApi/SatoshiApp.DiscountApi/Dockerfile
+
+  satoshiapp.discountgrpc:
+    image: ${DOCKER_REGISTRY-}satoshiappdiscountgrpc
+    build:
+      context: .
+      dockerfile: APIs/DiscountApi/SatoshiApp.DiscountGrpc/Dockerfile
+
+  satoshiapp.orderapi:
+    image: ${DOCKER_REGISTRY-}satoshiapporderapi
+    build:
+      context: .
+      dockerfile: APIs/OrderApi/SatoshiApp.OrderApi/Dockerfile
+
+  satoshi.apigateway:
+    image: ${DOCKER_REGISTRY-}satoshiapigateway
+    build:
+      context: .
+      dockerfile: APIGateway/Satoshi.ApiGateway/Dockerfile
+
+  satoshiapp.aggregator:
+    image: ${DOCKER_REGISTRY-}satoshiappaggregator
+    build:
+      context: .
+      dockerfile: APIGateway/SatoshiApp.Aggregator/Dockerfile
 
 volumes:
   mongo_data:

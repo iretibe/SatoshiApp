@@ -1,20 +1,78 @@
 services:
-  satoshiapp.customer:
+  basketdb:
+    container_name: basketdb
+    image: redis:alpine
+    ports:
+    - published: 6379
+      target: 6379
+    restart: always
+  discountdb:
+    container_name: discountdb
+    environment:
+      POSTGRES_DB: Discountdb
+      POSTGRES_PASSWORD: admin1234
+      POSTGRES_USER: admin
+    image: postgres
+    ports:
+    - published: 5432
+      target: 5432
+    restart: always
+    volumes:
+    - postgres_data:/var/lib/postgresql/data/:rw
+  pgadmin:
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: somad@yessoufou.com
+      PGADMIN_DEFAULT_PASSWORD: Admin@123
+    image: dpage/pgadmin4
+    ports:
+    - published: 5050
+      target: 80
+    restart: always
+    volumes:
+    - pgadmin_data:/root/.pgadmin:rw
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce
+    ports:
+    - published: 8080
+      target: 8000
+    - published: 9000
+      target: 9000
+    restart: always
+    volumes:
+    - portainer_data:/data:rw
+    - /var/run/docker.sock:/var/run/docker.sock:rw
+  productdb:
+    container_name: productdb
+    image: mongo
+    ports:
+    - published: 27017
+      target: 27017
+    restart: always
+    volumes:
+    - mongo_data:/data/db:rw
+  satoshiapp.basketapi:
     build:
-      context: C:\Users\Somad\source\repos\SatoshiApp
-      dockerfile: APIs/CustomerApi/SatoshiApp.Customer/Dockerfile
+      context: C:\PROJECTS\SatoshiApp
+      dockerfile: APIs/BasketApi/Satoshiapp.BasketApi/Dockerfile
       labels:
         com.microsoft.created-by: visual-studio
-        com.microsoft.visual-studio.project-name: SatoshiApp.Customer
+        com.microsoft.visual-studio.project-name: SatoshiApp.BasketApi
       target: base
-    container_name: SatoshiApp.Customer
+    container_name: satoshiapp.basketapi
+    depends_on:
+      basketdb:
+        condition: service_started
     entrypoint: tail -f /dev/null
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      CacheSettings:ConnectionString: basketdb:6379
       DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      GrpcSettings:DiscountUrl: http://discount.grpc
       NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
-    image: satoshiappcustomer:dev
+    image: satoshiappbasketapi:dev
     labels:
       com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
         --additionalProbingPath /root/.nuget/fallbackpackages  ""'
@@ -23,32 +81,38 @@ services:
       com.microsoft.visualstudio.debuggee.program: dotnet
       com.microsoft.visualstudio.debuggee.workingdirectory: /app
     ports:
-    - target: 80
+    - published: 9002
+      target: 80
     tty: true
     volumes:
-    - C:\Users\Somad\source\repos\SatoshiApp\APIs\CustomerApi\SatoshiApp.Customer:/app:rw
-    - C:\Users\Somad\vsdbg\vs2017u5:/remote_debugger:rw
-    - C:\Users\Somad\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-    - C:\Users\Somad\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
-    - C:\Microsoft\Xamarin\NuGet:/root/.nuget/fallbackpackages:ro
-    - C:\Users\Somad\.nuget\packages:/root/.nuget/packages:ro
-    - C:\Users\Somad\source\repos\SatoshiApp:/src:rw
-  satoshiapp.orderapi:
+    - C:\PROJECTS\SatoshiApp\APIs\BasketApi\Satoshiapp.BasketApi:/app:rw
+    - C:\Users\Michael Ameyaw\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Michael Ameyaw\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Michael Ameyaw\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/root/.nuget/fallbackpackages:ro
+    - C:\Users\Michael Ameyaw\.nuget\packages:/root/.nuget/packages:ro
+    - C:\PROJECTS\SatoshiApp:/src:rw
+  satoshiapp.discountapi:
     build:
-      context: C:\Users\Somad\source\repos\SatoshiApp
-      dockerfile: APIs/OrderApi/SatoshiApp.OrderApi/Dockerfile
+      context: C:\PROJECTS\SatoshiApp
+      dockerfile: APIs/DiscountApi/SatoshiApp.DiscountApi/Dockerfile
       labels:
         com.microsoft.created-by: visual-studio
-        com.microsoft.visual-studio.project-name: SatoshiApp.OrderApi
+        com.microsoft.visual-studio.project-name: SatoshiApp.DiscountApi
       target: base
-    container_name: SatoshiApp.OrderApi
+    container_name: satoshiapp.discountapi
+    depends_on:
+      discountdb:
+        condition: service_started
     entrypoint: tail -f /dev/null
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
       DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      DatabaseSettings:ConnectionString: Server=discountdb;Port=5432;Database=Discountdb;User
+        Id=admin;Password=admin1234;
       NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
-    image: satoshiapporderapi:dev
+    image: satoshiappdiscountapi:dev
     labels:
       com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
         --additionalProbingPath /root/.nuget/fallbackpackages  ""'
@@ -57,30 +121,75 @@ services:
       com.microsoft.visualstudio.debuggee.program: dotnet
       com.microsoft.visualstudio.debuggee.workingdirectory: /app
     ports:
-    - target: 80
+    - published: 9003
+      target: 80
     tty: true
     volumes:
-    - C:\Users\Somad\source\repos\SatoshiApp\APIs\OrderApi\SatoshiApp.OrderApi:/app:rw
-    - C:\Users\Somad\vsdbg\vs2017u5:/remote_debugger:rw
-    - C:\Users\Somad\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-    - C:\Users\Somad\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
-    - C:\Microsoft\Xamarin\NuGet:/root/.nuget/fallbackpackages:ro
-    - C:\Users\Somad\.nuget\packages:/root/.nuget/packages:ro
-    - C:\Users\Somad\source\repos\SatoshiApp:/src:rw
+    - C:\PROJECTS\SatoshiApp\APIs\DiscountApi\SatoshiApp.DiscountApi:/app:rw
+    - C:\Users\Michael Ameyaw\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Michael Ameyaw\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Michael Ameyaw\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/root/.nuget/fallbackpackages:ro
+    - C:\Users\Michael Ameyaw\.nuget\packages:/root/.nuget/packages:ro
+    - C:\PROJECTS\SatoshiApp:/src:rw
+  satoshiapp.discountgrpc:
+    build:
+      context: C:\PROJECTS\SatoshiApp
+      dockerfile: APIs/DiscountApi/SatoshiApp.DiscountGrpc/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: SatoshiApp.DiscountGrpc
+      target: base
+    container_name: satoshiapp.discountgrpc
+    depends_on:
+      discountdb:
+        condition: service_started
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      DatabaseSettings:ConnectionString: Server=localhost;Port=5432;Database=Discountdb;User
+        Id=admin;Password=admin1234;
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: satoshiappdiscountgrpc:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  ""'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - published: 9004
+      target: 80
+    tty: true
+    volumes:
+    - C:\PROJECTS\SatoshiApp\APIs\DiscountApi\SatoshiApp.DiscountGrpc:/app:rw
+    - C:\Users\Michael Ameyaw\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Michael Ameyaw\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Michael Ameyaw\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/root/.nuget/fallbackpackages:ro
+    - C:\Users\Michael Ameyaw\.nuget\packages:/root/.nuget/packages:ro
+    - C:\PROJECTS\SatoshiApp:/src:rw
   satoshiapp.productapi:
     build:
-      context: C:\Users\Somad\source\repos\SatoshiApp
+      context: C:\PROJECTS\SatoshiApp
       dockerfile: APIs/ProductApi/SatoshiApp.ProductApi/Dockerfile
       labels:
         com.microsoft.created-by: visual-studio
         com.microsoft.visual-studio.project-name: SatoshiApp.ProductApi
       target: base
-    container_name: SatoshiApp.ProductApi
+    container_name: satoshiapp.productapi
+    depends_on:
+      productdb:
+        condition: service_started
     entrypoint: tail -f /dev/null
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
       DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      DatabaseSettings:ConnectionString: mongodb://productdb:27017
       NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
     image: satoshiappproductapi:dev
     labels:
@@ -91,48 +200,20 @@ services:
       com.microsoft.visualstudio.debuggee.program: dotnet
       com.microsoft.visualstudio.debuggee.workingdirectory: /app
     ports:
-    - target: 80
+    - published: 9001
+      target: 80
     tty: true
     volumes:
-    - C:\Users\Somad\source\repos\SatoshiApp\APIs\ProductApi\SatoshiApp.ProductApi:/app:rw
-    - C:\Users\Somad\vsdbg\vs2017u5:/remote_debugger:rw
-    - C:\Users\Somad\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-    - C:\Users\Somad\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
-    - C:\Microsoft\Xamarin\NuGet:/root/.nuget/fallbackpackages:ro
-    - C:\Users\Somad\.nuget\packages:/root/.nuget/packages:ro
-    - C:\Users\Somad\source\repos\SatoshiApp:/src:rw
-  satoshiapp.userapi:
-    build:
-      context: C:\Users\Somad\source\repos\SatoshiApp
-      dockerfile: APIs/UserApi/SatoshiApp.UserApi/Dockerfile
-      labels:
-        com.microsoft.created-by: visual-studio
-        com.microsoft.visual-studio.project-name: SatoshiApp.UserApi
-      target: base
-    container_name: SatoshiApp.UserApi
-    entrypoint: tail -f /dev/null
-    environment:
-      ASPNETCORE_ENVIRONMENT: Development
-      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
-      DOTNET_USE_POLLING_FILE_WATCHER: '1'
-      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
-    image: satoshiappuserapi:dev
-    labels:
-      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
-        --additionalProbingPath /root/.nuget/fallbackpackages  ""'
-      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
-        dotnet); then kill $$PID; fi"
-      com.microsoft.visualstudio.debuggee.program: dotnet
-      com.microsoft.visualstudio.debuggee.workingdirectory: /app
-    ports:
-    - target: 80
-    tty: true
-    volumes:
-    - C:\Users\Somad\source\repos\SatoshiApp\APIs\UserApi\SatoshiApp.UserApi:/app:rw
-    - C:\Users\Somad\vsdbg\vs2017u5:/remote_debugger:rw
-    - C:\Users\Somad\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-    - C:\Users\Somad\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
-    - C:\Microsoft\Xamarin\NuGet:/root/.nuget/fallbackpackages:ro
-    - C:\Users\Somad\.nuget\packages:/root/.nuget/packages:ro
-    - C:\Users\Somad\source\repos\SatoshiApp:/src:rw
+    - C:\PROJECTS\SatoshiApp\APIs\ProductApi\SatoshiApp.ProductApi:/app:rw
+    - C:\Users\Michael Ameyaw\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Michael Ameyaw\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Michael Ameyaw\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/root/.nuget/fallbackpackages:ro
+    - C:\Users\Michael Ameyaw\.nuget\packages:/root/.nuget/packages:ro
+    - C:\PROJECTS\SatoshiApp:/src:rw
 version: '3.4'
+volumes:
+  mongo_data: {}
+  pgadmin_data: {}
+  portainer_data: {}
+  postgres_data: {}
