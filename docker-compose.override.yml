@@ -79,7 +79,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "CacheSettings:ConnectionString=basketdb:6379"
-      - "GrpcSettings:DiscountUrl=http://discount.grpc"
+      - "GrpcSettings:DiscountUrl=http://satoshiapp.discountgrpc"
       - "EventBusSettings:HostAddress=amqp://guest:guest@localhost:5672"
     depends_on:
         - basketdb
@@ -144,3 +144,17 @@ services:
         - satoshiapp.orderapi
     ports:
         - "9007:80"
+
+  satoshiapp.ui:
+    container_name: satoshiapp.ui
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ApiSettings:GatewayAddress=http://satoshi.apigateway"
+    depends_on:
+      - satoshi.apigateway
+      - satoshiapp.productapi
+      - satoshiapp.basketapi
+      - satoshiapp.discountapi
+      - satoshiapp.orderapi
+    ports:
+      - "9008:80"

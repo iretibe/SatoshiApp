@@ -40,3 +40,5 @@ C:\PROJECTS\SatoshiApp\APIGateway\Satoshi.ApiGateway\obj\Debug\net5.0\Satoshi.Ap
 C:\PROJECTS\SatoshiApp\APIGateway\Satoshi.ApiGateway\obj\Debug\net5.0\ref\Satoshi.ApiGateway.dll
 C:\PROJECTS\SatoshiApp\APIGateway\Satoshi.ApiGateway\obj\Debug\net5.0\Satoshi.ApiGateway.pdb
 C:\PROJECTS\SatoshiApp\APIGateway\Satoshi.ApiGateway\obj\Debug\net5.0\Satoshi.ApiGateway.genruntimeconfig.cache
+C:\PROJECTS\SatoshiApp\APIGateway\Satoshi.ApiGateway\bin\Debug\net5.0\ocelot.Development.json
+C:\PROJECTS\SatoshiApp\APIGateway\Satoshi.ApiGateway\bin\Debug\net5.0\ocelot.Local.json

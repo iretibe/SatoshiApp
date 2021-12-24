@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+rm/rWyXj1O4iRD6k80fFttpcm4g8ZJai0HKNLlK70mSyWM5kkSN0Ng8qokZrU2ULWCo8gkxpUUICeYjwljVEA==",
+  "dgSpecHash": "WJzsAIDO1zaHMIT2OqMh2SnMnBdRis3+aEXEXuojTsvq5Z4Dq51IvpTTf90eu3M9UfCXX/VgZQOkMDjIHrL0OQ==",
   "success": true,
   "projectFilePath": "C:\\PROJECTS\\SatoshiApp\\UI\\SatoshiApp.UI\\SatoshiApp.UI.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,7 @@
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\microsoft.codeanalysis.razor\\5.0.12\\microsoft.codeanalysis.razor.5.0.12.nupkg.sha512",
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\microsoft.extensions.dependencymodel\\5.0.0\\microsoft.extensions.dependencymodel.5.0.0.nupkg.sha512",
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
+    "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.14.0\\microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512",
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\system.reflection.metadata\\5.0.0\\system.reflection.metadata.5.0.0.nupkg.sha512",

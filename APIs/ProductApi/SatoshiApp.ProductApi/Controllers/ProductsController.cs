@@ -65,6 +65,15 @@ namespace SatoshiApp.ProductApi.Controllers
             return Ok(items);
         }
 
+        [Route("[action]/{category}", Name = "GetProductByCategory")]
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductByCategory(string category)
+        {
+            var products = await _productRepository.GetProductByCategory(category);
+            return Ok(products);
+        }
+
         [HttpPost]
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Product>> CreateProduct([FromBody] Product product)

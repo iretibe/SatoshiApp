@@ -24,6 +24,7 @@ namespace SatoshiApp.ProductApi.Data
                 {
                     Id = "602d2149e773f2a3990b47f5",
                     Name = "Laptop",
+                    Category = "Laptop",
                     Summary = "This is a laptop promo.",
                     Description = "This is a laptop.",
                     ImageFile = "product1.png",
@@ -33,6 +34,7 @@ namespace SatoshiApp.ProductApi.Data
                 {
                     Id = "602d2149e773f2a3990b47f6",
                     Name = "Keyboard",
+                    Category = "Keyboard",
                     Summary = "This is a keyboard promo.",
                     Description = "This is a keyboard.",
                     ImageFile = "product2.png",
@@ -42,6 +44,7 @@ namespace SatoshiApp.ProductApi.Data
                 {
                     Id = "602d2149e773f2a3990b47f7",
                     Name = "Paper",
+                    Category = "Paper",
                     Summary = "This is a paper promo",
                     Description = "Paper is a paper.",
                     ImageFile = "product3.png",
@@ -51,6 +54,7 @@ namespace SatoshiApp.ProductApi.Data
                 {
                     Id = "602d2149e773f2a3990b47f8",
                     Name = "Phone",
+                    Category = "Phone",
                     Summary = "This is a promo phone",
                     Description = "This is a phone.",
                     ImageFile = "product4.png",
@@ -60,6 +64,7 @@ namespace SatoshiApp.ProductApi.Data
                 {
                     Id = "602d2149e773f2a3990b47f9",
                     Name = "Printer",
+                    Category = "Printer",
                     Summary = "This is a promo printer.",
                     Description = "This is a printer.",
                     ImageFile = "product5.png",

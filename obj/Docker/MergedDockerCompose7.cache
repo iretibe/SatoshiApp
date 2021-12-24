@@ -1,0 +1,324 @@
+services:
+  basketdb:
+    container_name: basketdb
+    image: redis:alpine
+    ports:
+    - published: 6379
+      target: 6379
+    restart: always
+  discountdb:
+    container_name: discountdb
+    environment:
+      POSTGRES_DB: Discountdb
+      POSTGRES_PASSWORD: admin1234
+      POSTGRES_USER: admin
+    image: postgres
+    ports:
+    - published: 5432
+      target: 5432
+    restart: always
+    volumes:
+    - postgres_data:/var/lib/postgresql/data/:rw
+  orderdb:
+    container_name: orderdb
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: YEso!@12
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    ports:
+    - published: 1433
+      target: 1433
+    restart: always
+  pgadmin:
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: somad@yessoufou.com
+      PGADMIN_DEFAULT_PASSWORD: Admin@123
+    image: dpage/pgadmin4
+    ports:
+    - published: 5050
+      target: 80
+    restart: always
+    volumes:
+    - pgadmin_data:/root/.pgadmin:rw
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce
+    ports:
+    - published: 8080
+      target: 8000
+    - published: 9000
+      target: 9000
+    restart: always
+    volumes:
+    - portainer_data:/data:rw
+    - /var/run/docker.sock:/var/run/docker.sock:rw
+  productdb:
+    container_name: productdb
+    image: mongo
+    ports:
+    - published: 27017
+      target: 27017
+    restart: always
+    volumes:
+    - mongo_data:/data/db:rw
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3-management-alpine
+    ports:
+    - published: 5672
+      target: 5672
+    - published: 15672
+      target: 15672
+    restart: always
+  satoshi.apigateway:
+    build:
+      context: C:\PROJECTS\SatoshiApp
+      dockerfile: APIGateway/Satoshi.ApiGateway/Dockerfile
+    container_name: satoshi.apigateway
+    depends_on:
+      satoshiapp.basketapi:
+        condition: service_started
+      satoshiapp.discountapi:
+        condition: service_started
+      satoshiapp.orderapi:
+        condition: service_started
+      satoshiapp.productapi:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: satoshiapigateway
+    ports:
+    - published: 9006
+      target: 80
+  satoshiapp.aggregator:
+    build:
+      context: C:\PROJECTS\SatoshiApp
+      dockerfile: APIGateway/SatoshiApp.Aggregator/Dockerfile
+    container_name: satoshiapp.aggregator
+    depends_on:
+      satoshiapp.basketapi:
+        condition: service_started
+      satoshiapp.orderapi:
+        condition: service_started
+      satoshiapp.productapi:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ApiSettings:BasketUrl: http://satoshiapp.basketapi
+      ApiSettings:OrderUrl: http://satoshiapp.orderapi
+      ApiSettings:ProductUrl: http://satoshiapp.productapi
+    image: satoshiappaggregator
+    ports:
+    - published: 9007
+      target: 80
+  satoshiapp.basketapi:
+    build:
+      context: C:\PROJECTS\SatoshiApp
+      dockerfile: APIs/BasketApi/Satoshiapp.BasketApi/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: SatoshiApp.BasketApi
+      target: base
+    container_name: satoshiapp.basketapi
+    depends_on:
+      basketdb:
+        condition: service_started
+      rabbitmq:
+        condition: service_started
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      CacheSettings:ConnectionString: basketdb:6379
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      EventBusSettings:HostAddress: amqp://guest:guest@localhost:5672
+      GrpcSettings:DiscountUrl: http://satoshiapp.discountgrpc
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: satoshiappbasketapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  ""'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - published: 9002
+      target: 80
+    tty: true
+    volumes:
+    - C:\PROJECTS\SatoshiApp\APIs\BasketApi\Satoshiapp.BasketApi:/app:rw
+    - C:\Users\Michael Ameyaw\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Michael Ameyaw\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Michael Ameyaw\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/root/.nuget/fallbackpackages:ro
+    - C:\Users\Michael Ameyaw\.nuget\packages:/root/.nuget/packages:ro
+    - C:\PROJECTS\SatoshiApp:/src:rw
+  satoshiapp.discountapi:
+    build:
+      context: C:\PROJECTS\SatoshiApp
+      dockerfile: APIs/DiscountApi/SatoshiApp.DiscountApi/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: SatoshiApp.DiscountApi
+      target: base
+    container_name: satoshiapp.discountapi
+    depends_on:
+      discountdb:
+        condition: service_started
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      DatabaseSettings:ConnectionString: Server=discountdb;Port=5432;Database=Discountdb;User
+        Id=admin;Password=admin1234;
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: satoshiappdiscountapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  ""'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - published: 9003
+      target: 80
+    tty: true
+    volumes:
+    - C:\PROJECTS\SatoshiApp\APIs\DiscountApi\SatoshiApp.DiscountApi:/app:rw
+    - C:\Users\Michael Ameyaw\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Michael Ameyaw\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Michael Ameyaw\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/root/.nuget/fallbackpackages:ro
+    - C:\Users\Michael Ameyaw\.nuget\packages:/root/.nuget/packages:ro
+    - C:\PROJECTS\SatoshiApp:/src:rw
+  satoshiapp.discountgrpc:
+    build:
+      context: C:\PROJECTS\SatoshiApp
+      dockerfile: APIs/DiscountApi/SatoshiApp.DiscountGrpc/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: SatoshiApp.DiscountGrpc
+      target: base
+    container_name: satoshiapp.discountgrpc
+    depends_on:
+      discountdb:
+        condition: service_started
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      DatabaseSettings:ConnectionString: Server=localhost;Port=5432;Database=Discountdb;User
+        Id=admin;Password=admin1234;
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: satoshiappdiscountgrpc:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  ""'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - published: 9004
+      target: 80
+    tty: true
+    volumes:
+    - C:\PROJECTS\SatoshiApp\APIs\DiscountApi\SatoshiApp.DiscountGrpc:/app:rw
+    - C:\Users\Michael Ameyaw\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Michael Ameyaw\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Michael Ameyaw\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/root/.nuget/fallbackpackages:ro
+    - C:\Users\Michael Ameyaw\.nuget\packages:/root/.nuget/packages:ro
+    - C:\PROJECTS\SatoshiApp:/src:rw
+  satoshiapp.orderapi:
+    build:
+      context: C:\PROJECTS\SatoshiApp
+      dockerfile: APIs/OrderApi/SatoshiApp.OrderApi/Dockerfile
+    container_name: satoshiapp.orderapi
+    depends_on:
+      orderdb:
+        condition: service_started
+      rabbitmq:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings:OrderingConnectionString: Server=codelearnersoft.net;Database=SatoshiDB;User
+        ID=sa;Password=YEso!@12;Trusted_Connection=False;MultipleActiveResultSets=true;TrustServerCertificate=True
+      EventBusSettings:HostAddress: amqp://guest:guest@localhost:5672
+    image: satoshiapporderapi
+    ports:
+    - published: 9005
+      target: 80
+  satoshiapp.productapi:
+    build:
+      context: C:\PROJECTS\SatoshiApp
+      dockerfile: APIs/ProductApi/SatoshiApp.ProductApi/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: SatoshiApp.ProductApi
+      target: base
+    container_name: satoshiapp.productapi
+    depends_on:
+      productdb:
+        condition: service_started
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      DatabaseSettings:ConnectionString: mongodb://productdb:27017
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: satoshiappproductapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  ""'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - published: 9001
+      target: 80
+    tty: true
+    volumes:
+    - C:\PROJECTS\SatoshiApp\APIs\ProductApi\SatoshiApp.ProductApi:/app:rw
+    - C:\Users\Michael Ameyaw\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Michael Ameyaw\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Michael Ameyaw\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/root/.nuget/fallbackpackages:ro
+    - C:\Users\Michael Ameyaw\.nuget\packages:/root/.nuget/packages:ro
+    - C:\PROJECTS\SatoshiApp:/src:rw
+  satoshiapp.ui:
+    build:
+      context: C:\PROJECTS\SatoshiApp
+      dockerfile: UI/SatoshiApp.UI/Dockerfile
+    container_name: satoshiapp.ui
+    depends_on:
+      satoshi.apigateway:
+        condition: service_started
+      satoshiapp.basketapi:
+        condition: service_started
+      satoshiapp.discountapi:
+        condition: service_started
+      satoshiapp.orderapi:
+        condition: service_started
+      satoshiapp.productapi:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ApiSettings:GatewayAddress: http://satoshi.apigateway
+    image: satoshiappui
+    ports:
+    - published: 9008
+      target: 80
+version: '3.4'
+volumes:
+  mongo_data: {}
+  pgadmin_data: {}
+  portainer_data: {}
+  postgres_data: {}

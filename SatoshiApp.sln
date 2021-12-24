@@ -47,7 +47,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Satoshi.ApiGateway", "APIGa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatoshiApp.DiscountGrpc", "APIs\DiscountApi\SatoshiApp.DiscountGrpc\SatoshiApp.DiscountGrpc.csproj", "{73186CE7-C7BA-47DC-8561-BEB900EFD260}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatoshiApp.UI", "UI\SatoshiApp.UI\SatoshiApp.UI.csproj", "{602ACB1F-5F98-4E81-BEFB-B62BB6A30A24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatoshiApp.UI", "UI\SatoshiApp.UI\SatoshiApp.UI.csproj", "{602ACB1F-5F98-4E81-BEFB-B62BB6A30A24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

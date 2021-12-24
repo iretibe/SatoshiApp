@@ -4,7 +4,6 @@ using SatoshiApp.ProductApi.Data;
 using SatoshiApp.ProductApi.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace SatoshiApp.ProductApi.Repositories
@@ -39,7 +38,17 @@ namespace SatoshiApp.ProductApi.Repositories
                 .Find(p => p.Id == id)
                 .FirstOrDefaultAsync();
         }
-        
+
+        public async Task<IEnumerable<Product>> GetProductByCategory(string categoryName)
+        {
+            FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p => p.Category, categoryName);
+
+            return await _context
+                            .Products
+                            .Find(filter)
+                            .ToListAsync();
+        }
+
         public async Task<IEnumerable<Product>> GetProductByName(string name)
         {
             FilterDefinition<Product> filter = Builders<Product>.Filter.ElemMatch(p => p.Name, name);
