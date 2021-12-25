@@ -51,12 +51,19 @@ namespace SatoshiApp.ProductApi.Repositories
 
         public async Task<IEnumerable<Product>> GetProductByName(string name)
         {
-            FilterDefinition<Product> filter = Builders<Product>.Filter.ElemMatch(p => p.Name, name);
+            //FilterDefinition<Product> filter = Builders<Product>.Filter.ElemMatch(p => p.Name, name);
+
+            //return await _context
+            //    .Products
+            //    .Find(filter)
+            //    .ToListAsync();
+
+            FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p => p.Name, name);
 
             return await _context
-                .Products
-                .Find(filter)
-                .ToListAsync();
+                            .Products
+                            .Find(filter)
+                            .ToListAsync();
         }
 
         public async Task<IEnumerable<Product>> GetProducts()

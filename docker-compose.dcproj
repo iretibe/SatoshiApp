@@ -3,10 +3,10 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>241131bc-19d0-4ff0-9f16-c539acd3a0eb</ProjectGuid>
+    <ProjectGuid>adb636f3-d1c1-4133-8ba9-d45e3172ae28</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>satoshiapp.userapi</DockerServiceName>
+    <DockerServiceName>satoshiapp.productapi</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
