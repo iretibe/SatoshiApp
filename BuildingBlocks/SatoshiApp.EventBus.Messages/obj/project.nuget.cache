@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "stCWG3x8ZNBQKFQpLdPQdfc1hu4GqnUrTFPfAOY3Mhcxdbs5ldmPAi3Nf0dbsfWzUWwMU3GAhYeuWqbKev7JZQ==",
+  "dgSpecHash": "P1IaM2K6foObmwjv8hSGoAwFoMukZORk9pRvmefOr67atAQZrUipgyNY3iyw2FEUpRj2u2qPUhVziYCi8JCwSQ==",
   "success": true,
   "projectFilePath": "C:\\PROJECTS\\SatoshiApp\\BuildingBlocks\\SatoshiApp.EventBus.Messages\\SatoshiApp.EventBus.Messages.csproj",
   "expectedPackageFiles": [],

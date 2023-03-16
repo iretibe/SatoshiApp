@@ -10,14 +10,14 @@
         "projectUniqueName": "C:\\PROJECTS\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Application\\SatoshiApp.OrderApi.Application.csproj",
         "projectName": "SatoshiApp.OrderApi.Application",
         "projectPath": "C:\\PROJECTS\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Application\\SatoshiApp.OrderApi.Application.csproj",
-        "packagesPath": "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Somad\\.nuget\\packages\\",
         "outputPath": "C:\\PROJECTS\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Michael Ameyaw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Somad\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -96,7 +96,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -105,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -115,14 +116,14 @@
         "projectUniqueName": "C:\\PROJECTS\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Domain\\SatoshiApp.OrderApi.Domain.csproj",
         "projectName": "SatoshiApp.OrderApi.Domain",
         "projectPath": "C:\\PROJECTS\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Domain\\SatoshiApp.OrderApi.Domain.csproj",
-        "packagesPath": "C:\\Users\\Michael Ameyaw\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Somad\\.nuget\\packages\\",
         "outputPath": "C:\\PROJECTS\\SatoshiApp\\APIs\\OrderApi\\SatoshiApp.OrderApi.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Michael Ameyaw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Somad\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -155,7 +156,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -164,7 +166,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
